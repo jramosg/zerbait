@@ -19,7 +19,7 @@
                                   :keywordize true}
                          :cookies true
                          :session {:flash true
-                                   :cookie-name "kit.zerbait"
+                                   :cookie-name "kit.trukun"
                                    :cookie-attrs {:max-age 86400
                                                   :http-only true
                                                   :same-site :strict}}
@@ -38,6 +38,25 @@
  {:base-path "/api"
   :env #ig/ref :system/env}
 
+ :trukun/datasource {:dbtype "postgresql"
+                     :host "localhost"
+                     :port 5432
+                     :dbname "trukun_dev"
+                     :user "trukun"
+                     :password "your_password"}
+;;  #_#_#profile {:dev {:dbtype "postgresql"
+;;                                     :host "localhost"
+;;                                     :port 5432
+;;                                     :dbname "trukun_dev"
+;;                                     :user "trukun"
+;;                                     :password "your_password"}
+;;                               :prod {:dbtype "postgresql"
+;;                                      :host #env DB_HOST
+;;                                      :port #env DB_PORT
+;;                                      :dbname #env DB_NAME
+;;                                      :user #env DB_USER
+;;                                      :password #env DB_PASSWORD}}
+
  :router/routes
  {:routes #ig/refset :reitit/routes}
 
@@ -52,6 +71,8 @@
  :db.sql/migrations {:store :database,
                      :db {:datasource #ig/ref :db.sql/connection},
                      :migrate-on-init? true}
- :db.sql/connection #profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/zerbait_dev?user=zerbait&password=zerbait"},
-                              :test {:jdbc-url "jdbc:postgresql://localhost:5432/zerbait_test?user=zerbait&password=zerbait"},
-                              :prod {:jdbc-url #env JDBC_URL}}}
+ :db.sql/connection {:jdbc-url "jdbc:postgresql://localhost:5432/trukun_dev?user=trukun&password=your_password"}
+ ;#profile {:dev {:jdbc-url "jdbc:postgresql://localhost:5432/trukun_dev?user=trukun&password=your_password"},
+  ;                            :test {:jdbc-url "jdbc:postgresql://localhost:5432/trukun_test?user=trukun&password=trukun"},
+   ;                           :prod {:jdbc-url #env JDBC_URL}}
+ }

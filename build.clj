@@ -6,7 +6,7 @@
 
  (defn build-cljs [] (println "npx shadow-cljs release app...") (let [{:keys [exit], :as s} (shell "npx shadow-cljs release app")] (when-not (zero? exit) (throw (ex-info "could not compile cljs" s))) (copy-tree "target/classes/cljsbuild/public" "target/classes/public")))
 
-(def lib 'kit/zerbait)
+(def lib 'kit/trukun)
 (def main-cls (string/join "." (filter some? [(namespace lib) (name lib) "core"])))
 (def version (format "0.0.1-SNAPSHOT"))
 (def target-dir "target")
@@ -44,3 +44,6 @@
 
 (defn all [_]
   (do (clean nil) (prep nil) (uber nil)))
+
+(comment 
+  (load-file "build.clj"))

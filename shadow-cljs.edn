@@ -10,6 +10,6 @@
  :builds       {:app {:target     :browser
                       :output-dir "target/classes/cljsbuild/public/js"
                       :asset-path "/js"
-                      :modules    {:app {:entries [kit.zerbait.core]
-                                         :init-fn kit.zerbait.core/init!}}
-                      :devtools   {:after-load kit.zerbait.core/mount-root}}}}
+                      :modules    {:app {:entries [kit.trukun.core]
+                                         :init-fn kit.trukun.core/init!}}
+                      :devtools   {:after-load kit.trukun.core/mount-root}}}}
