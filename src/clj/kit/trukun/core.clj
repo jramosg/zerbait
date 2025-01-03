@@ -30,7 +30,7 @@
   ((or (:stop defaults) (fn [])))
   (some-> (deref system) (ig/halt!)))
 
-(defn start-app [& [params]]
+(defn start-app [& [params]] 
   ((or (:start params) (:start defaults) (fn [])))
   (->> (config/system-config (or (:opts params) (:opts defaults) {}))
        (ig/expand)
