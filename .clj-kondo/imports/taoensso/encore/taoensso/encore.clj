@@ -6,8 +6,8 @@
   (:require
    [clj-kondo.hooks-api :as hooks]))
 
-(defn defalias
-  [{:keys [node]}]
+(defn defalias 
+  [{:keys [node]}] 
   (let [[sym-raw src-raw] (rest (:children node))
         src (or src-raw sym-raw)
         sym (if src-raw sym-raw (symbol (name (hooks/sexpr src))))]
